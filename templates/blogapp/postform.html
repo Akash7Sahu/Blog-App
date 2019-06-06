@@ -1,0 +1,20 @@
+{% extends 'blogapp/index.html' %}
+
+{% block parentblock %}
+{% load crispy_forms_tags%}
+<div class="container">
+  <h2>File Upload Demo</h2>
+  <form action="#" method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{form}}
+    <input type="submit" value="Upload"/>
+
+  </form>
+
+  {% for img in images %}
+    <br>{{forloop.counter}}.<a href="{{img.pic.url}}">{{img.pic.name}}</a>
+    <img src="{{img.pic.url}}" height="100" width="150" />
+    ({{img.upload_date | timesince}}) <hr />
+  {% endfor %}
+
+</div>
+{%endblock%}

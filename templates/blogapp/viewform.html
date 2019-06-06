@@ -1,0 +1,41 @@
+{% extends 'blogapp/index.html' %}
+
+{% block parentblock %}
+<div class="container">
+
+  {% if viewlist %}
+  {% for blog in viewlist %}
+    <div class="well well-lg">
+      <div align="center">
+        <p>TITLE-{{blog.name}}</p>
+      </div>
+
+      <div align="left">
+        <img src="{{blog.pic.url}}" height="100" width="150" />
+      </div>
+
+      <div align="center">
+        <p>{{blog.body}}</p>
+      </div>
+
+
+      <div align="center">
+        <p>{{blog.upload_date|timesince}}</p>
+      </div>
+      <div align="right">
+        <p>BY-{{blog.author}}</p>
+      </div>
+
+  
+
+    </div>
+  {% endfor%}
+
+  {%else%}
+
+  	<h2>No Record Found</h2>
+
+  {%endif%}
+</div>
+
+{%endblock%}
